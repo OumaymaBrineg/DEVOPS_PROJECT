@@ -16,7 +16,7 @@ spec:
         - name: springboot-app
           image: mayma03/devops-project:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 8089   # matches server.port in .properties
           env:
             - name: SPRING_DATASOURCE_URL
               value: jdbc:mysql://mysql:3306/devops_db?createDatabaseIfNotExist=true
@@ -25,7 +25,7 @@ spec:
             - name: SPRING_DATASOURCE_PASSWORD
               value: rootpassword
       imagePullSecrets:
-            - name: dockerhub-secret
+        - name: dockerhub-secret
 ---
 apiVersion: v1
 kind: Service
@@ -36,6 +36,6 @@ spec:
     app: springboot-app
   ports:
     - port: 8080        # service port
-      targetPort: 8089  # matches containerPort
-      nodePort: 30080
+      targetPort: 8089  # container port inside pod
+      nodePort: 30080   # host-accessible port
   type: NodePort
