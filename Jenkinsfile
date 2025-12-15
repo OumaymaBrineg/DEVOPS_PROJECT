@@ -9,7 +9,8 @@ pipeline {
         stage('Code Checkout') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/OumaymaBrineg/DEVOPS_PROJECT.git',
+                    url: 'https://github.com/OumaymaBrineg/DEVOPS_PROJECT.git'
+                    // If private repo, add: credentialsId: 'jenkins-example-github-pat'
             }
         }
 
