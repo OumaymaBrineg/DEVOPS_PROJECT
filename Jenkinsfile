@@ -25,6 +25,14 @@ pipeline {
                         sh 'mvn package -Dmaven.test.skip=true'
                     }
                 }
+
+          stage('Sonar Analysis') {
+                     steps {
+                         withSonarQubeEnv('MySonarQubeServer') {
+                             sh 'mvn sonar:sonar -Dsonar.projectKey=DEVOPS_PROJECT -Dsonar.host.url=http://192.168.33.10:9000 -Dsonar.login=squ_7f6652fe272214f32b42fa2814b4a2bb9d7daa79'
+                         }
+                     }
+                 }
     }
 
     post {
