@@ -19,7 +19,7 @@ spec:
             - containerPort: 8080
           env:
             - name: SPRING_DATASOURCE_URL
-              value: jdbc:mysql://mysql:3306/devops_db
+              value: jdbc:mysql://mysql:3306/devops_db?createDatabaseIfNotExist=true
             - name: SPRING_DATASOURCE_USERNAME
               value: root
             - name: SPRING_DATASOURCE_PASSWORD
@@ -33,6 +33,7 @@ spec:
   selector:
     app: springboot-app
   ports:
-    - port: 8080
-      targetPort: 8080
+    - port: 8080        # Service port
+      targetPort: 8080  # Container port
+      nodePort: 30080   # Port to access from host machine
   type: NodePort
