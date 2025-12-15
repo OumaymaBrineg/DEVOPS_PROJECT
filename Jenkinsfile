@@ -19,6 +19,12 @@ pipeline {
                 sh 'mvn install -Dmaven.test.skip=true'
             }
         }
+
+         stage('mvn Package') {
+                    steps {
+                        sh 'mvn package'
+                    }
+                }
     }
 
     post {
