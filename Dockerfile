@@ -1,5 +1,5 @@
 # Dockerfile for Spring Boot App
-FROM openjdk:17-slim
+FROM openjdk:17-jdk-slim-bullseye
 
 ENV APP_JAR app.jar
 
