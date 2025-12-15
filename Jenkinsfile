@@ -26,10 +26,10 @@ pipeline {
                     }
                 }
 
-          stage('Sonar Analysis') {
+         stage('Sonar Analysis') {
                      steps {
                          withSonarQubeEnv('MySonarQubeServer') {
-                             sh 'mvn sonar:sonar -Dsonar.projectKey=DEVOPS_PROJECT -Dsonar.host.url=http://192.168.33.10:9000 -Dsonar.login=squ_7f6652fe272214f32b42fa2814b4a2bb9d7daa79'
+                             sh 'mvn sonar:sonar -Dsonar.projectKey=DEVOPS_PROJECT  -Dsonar.login=squ_7f6652fe272214f32b42fa2814b4a2bb9d7daa79'
                          }
                      }
                  }
