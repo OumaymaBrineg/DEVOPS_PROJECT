@@ -72,6 +72,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 echo "Deploying MySQL and Spring Boot app to Kubernetes..."
+                sh "kubectl apply -f k8s/mysql-pvc.yaml"
                 sh "kubectl apply -f k8s/mysql-deployment.yaml"
                 sh "kubectl apply -f k8s/app-deployment.yaml"
             }
