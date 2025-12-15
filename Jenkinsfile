@@ -10,7 +10,6 @@ pipeline {
             steps {
                 git branch: 'main',
                     url: 'https://github.com/OumaymaBrineg/DEVOPS_PROJECT.git'
-                    // If private repo, add: credentialsId: 'jenkins-example-github-pat'
             }
         }
 
@@ -28,9 +27,8 @@ pipeline {
 
         stage('Sonar Analysis') {
             steps {
-                withSonarQubeEnv('MySonarQubeServer') {
-                    // Hard-coded token
-                    sh 'mvn sonar:sonar -Dsonar.projectKey=DEVOPS_PROJECT -Dsonar.login=squ_7f6652fe272214f32b42fa2814b4a2bb9d7daa79'
+                withCredentials([string(credentialsId: 'sonar-access', variable: 'SONAR_TOKEN')]) {
+                    sh "mvn sonar:sonar -Dsonar.projectKey=DEVOPS_PROJECT -Dsonar.host.url=http://192.168.33.10:9000 -Dsonar.login=$SONAR_TOKEN"
                 }
             }
         }
