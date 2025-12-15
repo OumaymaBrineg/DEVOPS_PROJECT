@@ -8,9 +8,8 @@ pipeline {
     stages {
         stage('Code Checkout') {
             steps {
-                git branch: 'master',
+                git branch: 'main',
                     url: 'https://github.com/OumaymaBrineg/DEVOPS_PROJECT.git',
-                    credentialsId: 'jenkins-example-github-pat'
             }
         }
 
