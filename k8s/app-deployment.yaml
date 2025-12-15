@@ -35,7 +35,7 @@ spec:
   selector:
     app: springboot-app
   ports:
-    - port: 8080        # service port
-      targetPort: 8089  # container port inside pod
+    - port: 8080        # Service port
+      targetPort: 8089  # matches container port
       nodePort: 30080   # host-accessible port
   type: NodePort
